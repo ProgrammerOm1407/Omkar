@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sorry Preeta 🩷</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #e8527a;
+    --deep-rose: #c0365a;
+    --blush: #f9d0dd;
+    --petal: #fce8f0;
+    --cream: #fff8f9;
+    --gold: #d4956a;
+    --text: #3a1a26;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ── FLOATING SORRY BACKGROUND ── */
+  .sorry-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .sorry-word {
+    position: absolute;
+    font-family: 'Dancing Script', cursive;
+    color: rgba(232, 82, 122, 0.08);
+    font-size: clamp(1.2rem, 3vw, 2.8rem);
+    white-space: nowrap;
+    animation: floatUp linear infinite;
+    user-select: none;
+  }
+
+  @keyframes floatUp {
+    0%   { transform: translateY(110vh) rotate(-8deg); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(8deg); opacity: 0; }
+  }
+
+  /* ── HEARTS ── */
+  .heart-float {
+    position: absolute;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    animation: floatUp linear infinite;
+    opacity: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(252,232,240,0.85) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .sorry-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--rose), var(--deep-rose));
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+    padding: 0.5rem 2rem;
+    border-radius: 50px;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 30px rgba(192,54,90,0.3);
+    animation: badgePulse 3s ease-in-out infinite;
+  }
+
+  @keyframes badgePulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 8px 30px rgba(192,54,90,0.3); }
+    50%       { transform: scale(1.04); box-shadow: 0 12px 40px rgba(192,54,90,0.45); }
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-style: italic;
+    line-height: 1;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose) 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleReveal 1.2s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  @keyframes titleReveal {
+    from { opacity: 0; transform: translateY(40px) scale(0.95); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  .hero-name {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2rem, 6vw, 5rem);
+    color: var(--rose);
+    margin-bottom: 2.5rem;
+    animation: titleReveal 1.2s 0.2s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .hero-hearts {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    animation: heartBeat 1.4s ease-in-out infinite;
+    margin-bottom: 3rem;
+  }
+
+  @keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.2); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.15); }
+    56%       { transform: scale(1); }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--rose);
+    font-size: 1rem;
+    opacity: 0.7;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50%       { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+  }
+
+  .section-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--rose);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--rose), transparent);
+  }
+
+  .section-divider span {
+    color: var(--rose);
+    font-size: 1.2rem;
+  }
+
+  /* ── LETTER ── */
+  .letter-card {
+    background: white;
+    border: 1px solid rgba(232,82,122,0.15);
+    border-radius: 24px;
+    padding: clamp(2rem, 5vw, 4rem);
+    box-shadow: 0 20px 60px rgba(192,54,90,0.1), 0 4px 16px rgba(192,54,90,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .letter-card::before {
+    content: '❝';
+    position: absolute;
+    top: -0.5rem;
+    left: 1.5rem;
+    font-size: 6rem;
+    color: var(--blush);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+  }
+
+  .letter-text {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    line-height: 1.9;
+    color: var(--text);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+  }
+
+  .letter-text p { margin-bottom: 1.2rem; }
+  .letter-text p:last-child { margin-bottom: 0; }
+
+  .letter-sign {
+    display: block;
+    text-align: right;
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--rose);
+    margin-top: 2rem;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .photo-slot {
+    aspect-ratio: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, var(--petal), var(--blush));
+    border: 2px solid rgba(232,82,122,0.2);
+    box-shadow: 0 10px 30px rgba(192,54,90,0.12);
+    transition: transform 0.4s cubic-bezier(.16,1,.3,1), box-shadow 0.4s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .photo-slot:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(192,54,90,0.22);
+  }
+
+  .photo-slot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+  }
+
+  .photo-slot .placeholder-icon {
+    font-size: 3rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.6;
+  }
+
+  .photo-slot .placeholder-label {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--rose);
+    opacity: 0.8;
+    padding: 0 1rem;
+  }
+
+  .photo-slot .caption-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(58,26,38,0.75));
+    color: white;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1rem;
+    padding: 1.5rem 1rem 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .photo-slot:hover .caption-overlay { opacity: 1; }
+
+  /* ── UPLOAD BUTTON ── */
+  .upload-hint {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--rose);
+    font-style: italic;
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+
+  /* ── PROMISES ── */
+  .promises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .promise-card {
+    background: white;
+    border: 1px solid rgba(232,82,122,0.15);
+    border-radius: 18px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(192,54,90,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .promise-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(192,54,90,0.16);
+  }
+
+  .promise-emoji {
+    font-size: 2.2rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    animation: heartBeat 2s ease-in-out infinite;
+  }
+
+  .promise-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+  }
+
+  /* ── BIG SORRY ── */
+  .big-sorry-section {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, var(--deep-rose) 0%, var(--rose) 60%, var(--gold) 100%);
+    clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+    margin: 2rem 0;
+  }
+
+  .big-sorry-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 12vw, 10rem);
+    color: white;
+    font-style: italic;
+    line-height: 1;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.2);
+    animation: titleReveal 1s ease both;
+  }
+
+  .big-sorry-sub {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.4rem, 4vw, 2.5rem);
+    color: rgba(255,255,255,0.85);
+    margin-top: 1rem;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem 4rem;
+  }
+
+  .footer-hearts { font-size: clamp(2rem, 5vw, 4rem); letter-spacing: 0.3rem; animation: heartBeat 1.4s ease-in-out infinite; }
+
+  .footer-text {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.4rem, 4vw, 2.5rem);
+    color: var(--rose);
+    margin: 1rem 0;
+  }
+
+  .footer-sub {
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--text);
+    opacity: 0.5;
+  }
+
+  /* ── PHOTO UPLOAD ── */
+  .photo-slot input[type="file"] {
+    display: none;
+  }
+
+  .photo-slot label {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING BACKGROUND -->
+<div class="sorry-bg" id="sorryBg"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="sorry-badge">✨ From the bottom of my heart ✨</div>
+  <h1 class="hero-title">I'm Sorry</h1>
+  <div class="hero-name">Preeta 🩷</div>
+  <div class="hero-hearts">🩷 ❤️ 💗 🩷 ❤️</div>
+  <div class="scroll-hint">↓ scroll down ↓</div>
+</section>
+
+<!-- LETTER -->
+<div class="section reveal">
+  <div class="section-label">A Letter For You</div>
+  <div class="section-divider"><span>🌸</span></div>
+
+  <div class="letter-card">
+    <div class="letter-text">
+      <p>Hey Preeta,</p>
+      <p>I know I have hurt you, and I am truly, deeply sorry. I never wanted you to feel embarrassed, neglected, or unimportant — because you are everything but that to me.</p>
+      <p>I think about you every single day. Those long calls, late nights, every little memory we made together — I hold all of it so close to my heart. You mean the world to me, more than words can ever say.</p>
+      <p>I know I didn't stand up the way I should have, and I carry that regret with me. But please know — I was never against you. Not even for a single moment. My love for you has never wavered.</p>
+      <p>I promise I will always be there for you — not just in the good times, but especially in the hard ones. I promise I will never let anyone hurt you. I promise I will wait for you, no matter how long it takes.</p>
+      <p>Please give me one more chance. Let me show you who I really am. Let me create more memories with you. Let us laugh again, talk again, be us again.</p>
+      <p>I love you, Preeta. I truly, truly love you. 🩷</p>
+      <span class="letter-sign">— Your Baby 😭💗</span>
+    </div>
+  </div>
+</div>
+
+<!-- PHOTO GALLERY -->
+<div class="section reveal">
+  <div class="section-label">Our Memories 📸</div>
+  <div class="section-divider"><span>💞</span></div>
+  <div class="gallery-grid" id="gallery">
+
+    <div class="photo-slot">
+      <img src="IMG_20260116_183026_708.jpg.jpeg" alt="Our memory">
+      <span class="caption-overlay">Our memory 🩷</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Screenshot_20251111_223855.jpg.jpeg" alt="Miss you so much">
+      <span class="caption-overlay">Miss you so much 😭</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Screenshot_20251219_225141.jpg.jpeg" alt="Always in my heart">
+      <span class="caption-overlay">Always in my heart ❤️</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Screenshot_20251231_020841.jpg.jpeg" alt="You are my world">
+      <span class="caption-overlay">You are my world 🌸</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Snapchat-1172680624.jpg.jpeg" alt="Please forgive me">
+      <span class="caption-overlay">Please forgive me 🩷</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Snapchat-1858644976.jpg.jpeg" alt="I'll always wait for you">
+      <span class="caption-overlay">I'll always wait for you 💗</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Snapchat-1955103334.jpg.jpeg" alt="Forever yours">
+      <span class="caption-overlay">Forever yours 💞</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Snapchat-211394486.jpg.jpeg" alt="You mean everything">
+      <span class="caption-overlay">You mean everything 🌹</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Snapchat-631562170.jpg.jpeg" alt="My heart is yours">
+      <span class="caption-overlay">My heart is yours ✨</span>
+    </div>
+
+    <div class="photo-slot">
+      <img src="Snapchat-75397208.jpg.jpeg" alt="Can't live without you">
+      <span class="caption-overlay">Can't live without you 💫</span>
+    </div>
+
+  </div>
+  <p class="upload-hint">📷 Our precious memories together 🩷</p>
+</div>
+
+<!-- BIG SORRY -->
+<div class="big-sorry-section reveal">
+  <div class="big-sorry-text">Sorry</div>
+  <div class="big-sorry-sub">From the deepest corner of my heart 🩷</div>
+</div>
+
+<!-- PROMISES -->
+<div class="section reveal">
+  <div class="section-label">My Promises To You 🤞</div>
+  <div class="section-divider"><span>💌</span></div>
+  <div class="promises-grid">
+
+    <div class="promise-card">
+      <span class="promise-emoji">🛡️</span>
+      <p class="promise-text">I will always stand up for you — no matter what, no matter who.</p>
+    </div>
+
+    <div class="promise-card">
+      <span class="promise-emoji">🤝</span>
+      <p class="promise-text">I will be loyal to you, always. You can check — I have nothing to hide.</p>
+    </div>
+
+    <div class="promise-card">
+      <span class="promise-emoji">⏳</span>
+      <p class="promise-text">I will wait for you. However long it takes. You are worth every second.</p>
+    </div>
+
+    <div class="promise-card">
+      <span class="promise-emoji">😌</span>
+      <p class="promise-text">I will never be angry at you because of others. You come first, always.</p>
+    </div>
+
+    <div class="promise-card">
+      <span class="promise-emoji">🌙</span>
+      <p class="promise-text">Late night calls, long talks — I want all of it back. I'm ready whenever you are.</p>
+    </div>
+
+    <div class="promise-card">
+      <span class="promise-emoji">🩷</span>
+      <p class="promise-text">In your best days and your hardest ones — I will always be there for you.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer reveal">
+  <div class="footer-hearts">🩷 ❤️ 💗 🩷 ❤️</div>
+  <div class="footer-text">I Love You, Preeta</div>
+  <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.2rem; color:var(--rose); margin-bottom:1rem;">
+    Miss you so much 😭 Please come back 🥺
+  </p>
+  <p class="footer-sub">— Your Baby is waiting for you 🩷</p>
+</footer>
+
+<script>
+// ── BACKGROUND WORDS ──
+const bg = document.getElementById('sorryBg');
+const words = ['Sorry', 'I Love You', 'Miss You', 'Forgive Me', 'Please', 'Sorry :(', '🩷', '❤️', '😭', 'Sorry...', 'Come Back', 'I Miss You'];
+const emojis = ['🩷','❤️','💗','🌸','💞','😭','🥺','💌','✨','🌹'];
+
+function makeWord() {
+  const el = document.createElement('span');
+  el.classList.add('sorry-word');
+  el.textContent = words[Math.floor(Math.random() * words.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  const dur = 8 + Math.random() * 12;
+  el.style.animationDuration = dur + 's';
+  el.style.animationDelay = Math.random() * -dur + 's';
+  el.style.fontSize = (1 + Math.random() * 2) + 'rem';
+  bg.appendChild(el);
+  setTimeout(() => el.remove(), dur * 1000 + 500);
+}
+
+function makeHeart() {
+  const el = document.createElement('span');
+  el.classList.add('heart-float');
+  el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  const dur = 6 + Math.random() * 8;
+  el.style.animationDuration = dur + 's';
+  el.style.animationDelay = '0s';
+  el.style.fontSize = (0.8 + Math.random() * 1.5) + 'rem';
+  bg.appendChild(el);
+  setTimeout(() => el.remove(), dur * 1000 + 500);
+}
+
+// Seed initial words
+for (let i = 0; i < 20; i++) {
+  const el = document.createElement('span');
+  el.classList.add('sorry-word');
+  el.textContent = words[Math.floor(Math.random() * words.length)];
+  el.style.left = Math.random() * 100 + 'vw';
+  const dur = 8 + Math.random() * 12;
+  el.style.animationDuration = dur + 's';
+  el.style.animationDelay = -(Math.random() * dur) + 's';
+  el.style.fontSize = (1 + Math.random() * 2) + 'rem';
+  bg.appendChild(el);
+}
+
+setInterval(makeWord, 1200);
+setInterval(makeHeart, 800);
+
+// ── SCROLL REVEAL ──
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+reveals.forEach(r => observer.observe(r));
+
+// ── PHOTO UPLOAD ──
+function triggerUpload(slot) {
+  slot.querySelector('input[type="file"]').click();
+}
+
+function loadPhoto(event, slot) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    // Remove placeholder content
+    slot.querySelector('label').style.display = 'none';
+    // Add image
+    let img = slot.querySelector('img');
+    if (!img) { img = document.createElement('img'); slot.insertBefore(img, slot.firstChild); }
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+  event.stopPropagation();
+}
+</script>
+</body>
+</html>
